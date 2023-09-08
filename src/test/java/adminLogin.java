@@ -1,39 +1,36 @@
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 import static org.testng.AssertJUnit.fail;
 
-
-public class Login {
+public class adminLogin {
     WebDriver driver;
-    @BeforeClass void setUp() {
+
+    @BeforeClass
+    void setUp() {
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(option);
-    }
-    @BeforeMethod
-    void  reloadPage(){
         driver.get("https://opensource-demo.orangehrmlive.com/");
     }
 
     private static final long shortTimeout = 15;
-    private static final long longTimeout = 30;
-    @Test public void LoginAdmin() {
+    @Test public void adminLogin(){
         //Waiting and checking the page has loaded correctly
         WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(shortTimeout));
-        WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(longTimeout));
-
         try {
             shortWait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
-        } catch (TimeoutException ex) {
+        } catch (
+                TimeoutException ex) {
             fail("username input field not found.");
         }
         //Locate and Enter username
@@ -44,8 +41,6 @@ public class Login {
 
         //Locate and click Login button
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-
-        //Locate and click Admin on sidebar
-        driver.findElement(By.name( "oxd-text oxd-text--span oxd-main-menu-item--name")).click();
     }
+
 }
