@@ -33,7 +33,7 @@ public class adminLogin {
                 TimeoutException ex) {
             fail("username input field not found.");
         }
-        //Locate and Enter username
+        //Locate and Enter username test
         driver.findElement(By.name("username")).sendKeys("Admin");
 
         //Locate and Enter password
