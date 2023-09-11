@@ -8,11 +8,9 @@ public class AdminAddUserPage {
     @FindBy(xpath = "(//i[contains(@class, \"oxd-select-text--arrow\")])[1]")
     public WebElement selectRole;
 
-//    @FindBy(xpath = "(//div[contains(@class, \"oxd-select-text--active\")])[1]")
-//    public WebElement selectRole;
-
-    Select dropdown = new Select(selectRole);
-
-    // Select an option by its visible text
+    public void setDropdown() {
+        Select dropdown = new Select(selectRole);
+        // Select an option by its visible text
         dropdown.selectByVisibleText("Admin");
+    }
 }
