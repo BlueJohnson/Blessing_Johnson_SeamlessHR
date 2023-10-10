@@ -1,11 +1,13 @@
 package HR.pages;
 
 import BaseClasses.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AdminPage extends BasePage {
-
+    @FindBy(xpath = "//span[@class = \"oxd-topbar-header-breadcrumb\" ]")
+    public WebElement adminHeader;
     @FindBy(xpath = "//div[@class='' and @data-v-957b4417='']/input[ @data-v-1f99f73c and contains (@class, \"oxd-input\")] ")
     public WebElement userName;
 
@@ -22,7 +24,7 @@ public class AdminPage extends BasePage {
 
     @FindBy(xpath = "//button[text() = \" Search \"]")
     public WebElement searchBtn;
-    @FindBy(xpath = "//button[@role = \"none\" and contains (@class, \"oxd-main-menu-button\")]")
+    @FindBy(xpath = "//button[text() = \" Add \"]")
     public WebElement addBtn;
 
     public void clickAddBtn() {

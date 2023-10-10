@@ -1,5 +1,6 @@
 package BaseClasses;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,9 +18,17 @@ public class BasePage {
     }
 
 
+//    public void waitForVisibility(WebElement element) {
+//        wait.until(ExpectedConditions.visibilityOf(element));
+//    }
     public void waitForVisibility(WebElement element) {
+    try {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.visibilityOf(element));
+    } catch (TimeoutException e) {
+
     }
+}
 
     public void click(WebElement element) {
         waitForVisibility(element);
