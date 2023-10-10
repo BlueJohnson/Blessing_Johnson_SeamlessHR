@@ -79,9 +79,8 @@ public class TestBase {
             case "firefox" -> setupFirefoxDriver();
             default -> throw new IllegalStateException("Invalid browser specified: " + browser);
         }
-
-        driver.get(baseUrl);
         driver.manage().window().maximize();
+        driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(30));
     }
 
